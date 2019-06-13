@@ -1,4 +1,4 @@
-Brittany Moyers
+Brittany Moyers - for real this time
 
 # JavaScript IV
 

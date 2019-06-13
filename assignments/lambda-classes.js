@@ -26,14 +26,17 @@ class Instructor extends Person{
     grade(student,subject){
         return `${student.name} receives a perfect score on ${subject}!`;
     };
-    realGrade(Student){
+    changeGrade(Student){
         
-            return `${this.name} has tallied ${Student.name}'s scores. Their final grade is ${Student.grade + Math.floor(Math.random() * 21) - 10}`
+      
+      Student.grade = Student.grade + Math.floor(Math.random() * 21) - 10;
+      
+      return `${this.name} has tallied ${Student.name}'s scores. Their final grade is ${Student.grade}`
              
-        };
+    
         
     };
-        
+}
     // return `${this.name} has tallied ${this.Student.name}'s scores. Their final grade is 
     // ${function(Student){return Student.grade - getRandomIntInclusive(); }}`};
 
@@ -62,7 +65,7 @@ class Student extends Person{
         this.previousBackground = info.previousBackground;
         this.className = info.className;
         this.favSubjects = info.favSubjects;
-        this.grade = 90;
+        this.grade = info.grade;
     };
     listSubjects(){
         return this.favSubjects.join(`\n`);
@@ -74,6 +77,14 @@ class Student extends Person{
     };
     sprintChallenge(subject){
         return `${student.name} has begun a sprint challenge on ${this.subject}.`
+    }
+    graduate(){
+         if(this.grade >= 70){
+             return `Congratulations, ${this.name}! You've successfully graduated from Lambda School!`;
+         }
+         else{
+             return `Unfortunately, ${this.name}, your performance needs a little work. But don't give up! It's time to flex!`
+         } 
     }
 }
 
@@ -203,6 +214,7 @@ const brittany = new Student ({
     previousBackground: "Preschool Teacher",
     className: 'Web21',
     favSubjects: ["JavaScript", "Literature", "Google"],
+    grade: 90
     
 
 });
@@ -211,7 +223,5 @@ console.log(brittany.speak());
 console.log(austin.standUp("Web21_Austin"));
 console.log(darren.debugsCode(joscelyn, "English"))
 console.log(dan.demo("JavaScript"))
-console.log(dan.realGrade(brittany));
-console.log(dan.realGrade(brittany));
-console.log(dan.realGrade(brittany));
-
+console.log(dan.changeGrade(brittany));
+console.log(brittany.graduate());

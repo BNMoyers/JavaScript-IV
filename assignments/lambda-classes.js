@@ -21,10 +21,10 @@ class Instructor extends Person{
         this.catchPhrase = info.catchPhrase;
     };
     demo(subject){
-        return`Today, we are learning about ${this.subject}`;
+        return`Today, we are learning about ${subject}.`;
     }
     grade(student,subject){
-        return `${student.name} receives a perfect score on ${this.subject}`;
+        return `${student.name} receives a perfect score on ${subject}!`;
     };
 }
 
@@ -38,10 +38,10 @@ class ProjectManager extends Instructor{
 
     };
     standUp(channel){
-        return `${this.name} announces to ${this.channel}, "@channel standy times!"`
+        return `${this.name} announces to ${channel}, "@channel standy times!"`
     };
     debugsCode(student, subject){
-        return `${this.name} debugs ${student.name}'s code on ${this.subject}`
+        return `${this.name} debugs ${student.name}'s code on ${subject}.`
     }
 
 }
@@ -55,11 +55,10 @@ class Student extends Person{
         this.favSubjects = info.favSubjects;
     };
     listSubjects(){
-        return function(){
-            this.favSubjects.string(' ');
+        return this.favSubjects.join(`\n`);
         }
          
-    };
+    
     PRAssignment(subject){
         return `${student.name} has submitted a PR for ${this.subject}.`;
     };
@@ -198,5 +197,7 @@ const brittany = new Student ({
 });
 console.log(brittany.listSubjects());
 console.log(brittany.speak());
-console.log(austin.standUp());
+console.log(austin.standUp("Web21_Austin"));
+console.log(darren.debugsCode(joscelyn, "English"))
+console.log(dan.demo("JavaScript"))
 

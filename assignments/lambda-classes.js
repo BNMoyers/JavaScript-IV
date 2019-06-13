@@ -3,65 +3,68 @@
 
 class Person{
     constructor(info){
-        this.name = name;
-        this.age = age;
-        this.location = location;
+        this.name = info.name;
+        this.age = info.age;
+        this.location = info.location;
     }
     speak(){
-        console.log(`Hello, my name is ${this.name} and I am from ${this.location}.`);
+        return `Hello, my name is ${this.name} and I am from ${this.location}.`;
     };
 }
 
 /* Instructors - child of Person*/
-class Instructors extends Person{
+class Instructor extends Person{
     constructor(info){
         super(info);
-        this.specialty = specialty;
-        this.favLanguage = this.favLanguage;
-        this.catchPhrase = this.catchPhrase;
+        this.specialty = info.specialty;
+        this.favLanguage = info.favLanguage;
+        this.catchPhrase = info.catchPhrase;
     };
     demo(subject){
-        console.log(`Today, we are learning about ${subject}`);
+        return`Today, we are learning about ${this.subject}`;
     }
     grade(student,subject){
-        console.log(`${student.name} receives a perfect score on ${subject}`);
+        return `${student.name} receives a perfect score on ${this.subject}`;
     };
 }
 
 /* Project Managers - child of Instructors*/
 
-class ProjectManagers extends Instructors{
+class ProjectManager extends Instructor{
     constructor(info){
         super(info);
-        this.gradClassName = this.gradClassName;
-        this.favInstructor = this.favInstructor;
+        this.gradClassName = info.gradClassName;
+        this.favInstructor = info.favInstructor;
 
     };
     standUp(channel){
-        console.log(`${this.name} announces to ${this.channel}, "@channel standy times!"`)
+        return `${this.name} announces to ${this.channel}, "@channel standy times!"`
     };
     debugsCode(student, subject){
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
+        return `${this.name} debugs ${student.name}'s code on ${this.subject}`
     }
 
 }
 
 /*Students - child of Person*/
-class Students extends Person{
+class Student extends Person{
     constructor(info){
         super(info);
-        this.previousBackground = this.previousBackground;
-        this.className = this.className;
-        this.favSubjects = this.favSubjects;
+        this.previousBackground = info.previousBackground;
+        this.className = info.className;
+        this.favSubjects = info.favSubjects;
     };
     listSubjects(){
-        console.log(this.favSubjects);
+        return function(){
+            this.favSubjects.string(' ');
+        }
+         
     };
     PRAssignment(subject){
-        console.log(`${student.name} has submitted a PR for ${subject}.`);
+        return `${student.name} has submitted a PR for ${this.subject}.`;
     };
     sprintChallenge(subject){
-        console.log(`${student.name} has begun a sprint challenge on ${subject}.`)
+        return `${student.name} has begun a sprint challenge on ${this.subject}.`
     }
 }
 
@@ -192,4 +195,8 @@ const brittany = new Student ({
     className: 'Web21',
     favSubjects: ["JavaScript", "Literature", "Google"],
 
-})
+});
+console.log(brittany.listSubjects());
+console.log(brittany.speak());
+console.log(austin.standUp());
+

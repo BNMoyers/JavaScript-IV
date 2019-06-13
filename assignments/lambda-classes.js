@@ -26,7 +26,16 @@ class Instructor extends Person{
     grade(student,subject){
         return `${student.name} receives a perfect score on ${subject}!`;
     };
-}
+    realGrade(Student){
+        
+            return `${this.name} has tallied ${Student.name}'s scores. Their final grade is ${Student.grade + Math.floor(Math.random() * 21) - 10}`
+             
+        };
+        
+    };
+        
+    // return `${this.name} has tallied ${this.Student.name}'s scores. Their final grade is 
+    // ${function(Student){return Student.grade - getRandomIntInclusive(); }}`};
 
 /* Project Managers - child of Instructors*/
 
@@ -53,6 +62,7 @@ class Student extends Person{
         this.previousBackground = info.previousBackground;
         this.className = info.className;
         this.favSubjects = info.favSubjects;
+        this.grade = 90;
     };
     listSubjects(){
         return this.favSubjects.join(`\n`);
@@ -193,6 +203,7 @@ const brittany = new Student ({
     previousBackground: "Preschool Teacher",
     className: 'Web21',
     favSubjects: ["JavaScript", "Literature", "Google"],
+    
 
 });
 console.log(brittany.listSubjects());
@@ -200,4 +211,7 @@ console.log(brittany.speak());
 console.log(austin.standUp("Web21_Austin"));
 console.log(darren.debugsCode(joscelyn, "English"))
 console.log(dan.demo("JavaScript"))
+console.log(dan.realGrade(brittany));
+console.log(dan.realGrade(brittany));
+console.log(dan.realGrade(brittany));
 
